@@ -1,35 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./styles.css"; // Import separate CSS file
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      {/* Left Section */}
+      <div className="left-section">
+        <h2>Options</h2>
+
+        <div className="option-container">
+          {selectedOption === "option1" ? (
+            <p className="option-details">Details for Option 1</p>
+          ) : (
+            <p
+              className="option-title"
+              onClick={() => setSelectedOption("option1")}
+            >
+              Option 1
+            </p>
+          )}
+        </div>
+
+        <div className="option-container">
+          {selectedOption === "option2" ? (
+            <p className="option-details">Details for Option 2</p>
+          ) : (
+            <p
+              className="option-title"
+              onClick={() => setSelectedOption("option2")}
+            >
+              Option 2
+            </p>
+          )}
+        </div>
+
+        <div className="option-container">
+          {selectedOption === "option3" ? (
+            <p className="option-details">Details for Option 3</p>
+          ) : (
+            <p
+              className="option-title"
+              onClick={() => setSelectedOption("option3")}
+            >
+              Option 3
+            </p>
+          )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      {/* Right Section */}
+      <div className="right-section">
+        {selectedOption ? (
+          <>
+            <h2>{selectedOption.replace("option", "Option ")}</h2>
+            <img
+              src={
+                selectedOption === "option1"
+                  ? "https://via.placeholder.com/300/FF5733"
+                  : selectedOption === "option2"
+                  ? "https://via.placeholder.com/300/33FF57"
+                  : "https://via.placeholder.com/300/3357FF"
+              }
+              alt="Selected Option"
+              className="option-image"
+            />
+          </>
+        ) : (
+          <h2>Select an option</h2>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
