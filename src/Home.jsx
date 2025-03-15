@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 export default function Home() {
+  const [selectedOption, setSelectedOption] = useState(null);
+
   return (
     <>
       <div className="container">
